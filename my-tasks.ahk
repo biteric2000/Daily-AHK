@@ -41,30 +41,6 @@ IsNightTime() {
 ; ================ 功能一：夜间物理闲置关屏 =================
 ; ========================================================
 
-SetTimer(ForceScreenOffCheck, CheckIntervalMs)
-
-ForceScreenOffCheck() {
-    global IdleTimeoutMs, ScreenIsOff
-
-    ; 白天完全不触发，并复位状态，避免影响夜间逻辑
-    if (!IsNightTime()) {
-        ScreenIsOff := false
-        return
-    }
-
-    idle := A_TimeIdlePhysical
-
-    if (idle > IdleTimeoutMs) {
-        ; 只在"由亮转暗"这一瞬间发送一次关屏命令，避免重复发送
-        if (!ScreenIsOff) {
-            PostMessage(0x0112, 0xF170, 2, , "Program Manager")
-            ScreenIsOff := true
-        }
-    } else {
-        ; 检测到用户操作，说明屏幕已被唤醒，复位状态
-        ScreenIsOff := false
-    }
-}
 
 ; ========================================================
 ; ================ 功能二：夜间自动降低音量 =================
@@ -89,6 +65,58 @@ DecreaseVolumeAtNight() {
     KeyWait("F23")
     Send("{RControl up}")
 }
+
+; ========================================================
+; ============== 功能四：自启动鼠标控制程序 ==============
+; ========================================================
+
+; 启动程序并等待窗口出现后自动最小化
+Run('"C:\Program Files\Highresolution Enterprises\X-Mouse Button Control\XMouseButtonControl.exe"')
+
+
+; ============================================
+; 功能五：NumLock灯状态互换
+; NumLock 灯灭 = 数字模式
+; NumLock 灯亮 = 方向/编辑模式
+; ============================================
+
+; --- NumLock【开】(灯亮) 时物理键发出 Numpad0~9/NumpadDot 信号 ---
+; 转发成方向/编辑功能
+Numpad0::Send("{Ins}")
+Numpad1::Send("{End}")
+Numpad2::Send("{Down}")
+Numpad3::Send("{PgDn}")
+Numpad4::Send("{Left}")
+Numpad5::Send("{Clear}")
+Numpad6::Send("{Right}")
+Numpad7::Send("{Home}")
+Numpad8::Send("{Up}")
+Numpad9::Send("{PgUp}")
+NumpadDot::Send("{Del}")
+
+; --- NumLock【关】(灯灭) 时物理键发出 NumpadIns/NumpadEnd 等信号 ---
+; 转发成数字
+NumpadIns::Send("0")
+NumpadEnd::Send("1")
+NumpadDown::Send("2")
+NumpadPgDn::Send("3")
+NumpadLeft::Send("4")
+NumpadClear::Send("5")
+NumpadRight::Send("6")
+NumpadHome::Send("7")
+NumpadUp::Send("8")
+NumpadPgUp::Send("9")
+NumpadDel::Send(".")
+
+; 加减乘除、Enter 两种状态下功能相同，不受影响，无需处理
+
+; 开机默认让 NumLock 保持关闭（灯灭 + 数字模式）
+SetNumLockState("Off")
+
+; 如果想彻底禁用物理 NumLock 键的切换能力，改成下面这行：
+; SetNumLockState("AlwaysOff")
+
+
 
 ; ========================================================
 ; ======================== 热键区域 ========================
