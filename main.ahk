@@ -18,7 +18,6 @@ SetKeyDelay(50, 50)
 #Include modules\50_ThemeToggle.ahk
 #Include modules\60_BacklightAutoOff.ahk
 #Include modules\70_CloseScreen.ahk
-#Include modules\80_FluxPreset.ahk
 #Include modules\90_WindowManager.ahk
 
 ^+!r:: Reload()
