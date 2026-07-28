@@ -33,7 +33,6 @@ MyAutoScript/
     ├── 50_ThemeToggle.ahk        # 浅色 / 深色模式切换
     ├── 60_BacklightAutoOff.ahk   # 键盘背光自动关闭
     ├── 70_CloseScreen.ahk        # 立即关闭屏幕
-    ├── ~~80_FluxPreset.ahk         # f.lux 色温预设~~
     └── 90_WindowManager.ahk      # 置顶切换 + 移动窗口到下一显示器
 ```
 
@@ -88,7 +87,6 @@ MyAutoScript/
 | `50_ThemeToggle.ahk` | 浅色 / 深色模式切换 | 50 | 70 | 4 | 自定义菜单（两个按钮：切浅色 / 切深色） |
 | `60_BacklightAutoOff.ahk` | 键盘背光自动关闭 | 60 | 10 | 1 | 依赖 DllCall / 系统电源通知 |
 | `70_CloseScreen.ahk` | 立即关闭屏幕 | 70 | 50 | 2 | 快捷键 `Ctrl+Alt+O`，单按钮无开关状态 |
-~~| `80_FluxPreset.ahk` | f.lux 色温预设 | 80 | 60 | 3 | 8 档色温预设一键切换，自动打勾标记当前色温 |~~
 | `90_WindowManager.ahk` | 置顶切换 + 移动窗口到下一显示器 | 90 | 25 | 1 | 纯热键驱动，不在菜单中出现开关 |
 
 
@@ -103,9 +101,6 @@ NumLock 状态反转     (MenuGroup 1)
 夜间自动降低音量     (MenuGroup 1)
 ──────────────
 立即关闭屏幕         (MenuGroup 2)
-──────────────
-~~[f.lux 8 个色温预设]  (MenuGroup 3)~~
-~~f.lux 暂停 / 启用~~
 ──────────────
 切换为浅色模式       (MenuGroup 4)
 切换为深色模式
