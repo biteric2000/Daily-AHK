@@ -19,6 +19,7 @@ SetKeyDelay(50, 50)
 #Include modules\60_BacklightAutoOff.ahk
 #Include modules\70_CloseScreen.ahk
 #Include modules\90_WindowManager.ahk
+#Include modules\100_HibernateHotkey.ahk
 
 ^+!r:: Reload()
 ^!q:: ExitApp()
