@@ -1,6 +1,6 @@
 # 个人自动化脚本（AHK v2）
 
-**主要功能：双击托盘图标切换系统深浅主题色、夜间自动降低音量、Copilot 键重映射为Ctrl、NumLock 状态反转、置顶切换、win+w 立即休眠**
+**主要功能：双击托盘图标切换系统深浅主题色、夜间自动降低音量、Copilot 键重映射为Ctrl、NumLock 状态反转、置顶切换、Win+W 立即休眠**
 
 基于 **AutoHotkey v2** 编写的个人自动化脚本集合，采用**模块化架构**。
 
@@ -33,14 +33,11 @@ MyAutoScript/
     ├── 50_ThemeToggle.ahk        # 浅色 / 深色模式切换
     ├── 60_BacklightAutoOff.ahk   # 键盘背光自动关闭
     ├── 70_CloseScreen.ahk        # 立即关闭屏幕
-    └── 90_WindowManager.ahk      # 置顶切换 + 移动窗口到下一显示器
+    ├── 90_WindowManager.ahk      # 置顶切换 + 移动窗口到下一显示器
     └── 100_HibernateHotkey.ahk   # Win+W 立即休眠
-
 ```
 
-
 > **命名规则**：`modules/` 下文件名前缀数字（10 / 20 / 30 ...）**只是给人看的参考顺序**，不影响实际运行。
-
 >
 > 真正决定运行顺序的是模块内部的 `Priority` 属性。新增模块时，建议取一个比现有最大值大 10 的数字作前缀。
 
@@ -63,6 +60,7 @@ MyAutoScript/
 | `Ctrl+Shift+Alt+R` | 重新加载脚本 |
 | `Ctrl+Alt+Q` | 退出脚本 |
 | `Ctrl+Alt+O` | 立即关闭屏幕 |
+| `Win+W` | 立即休眠 |
 
 ---
 
@@ -90,6 +88,7 @@ MyAutoScript/
 | `60_BacklightAutoOff.ahk` | 键盘背光自动关闭 | 60 | 10 | 1 | 依赖 DllCall / 系统电源通知 |
 | `70_CloseScreen.ahk` | 立即关闭屏幕 | 70 | 50 | 2 | 快捷键 `Ctrl+Alt+O`，单按钮无开关状态 |
 | `90_WindowManager.ahk` | 置顶切换 + 移动窗口到下一显示器 | 90 | 25 | 1 | 纯热键驱动，不在菜单中出现开关 |
+| `100_HibernateHotkey.ahk` | 立即休眠 | 100 | — | — | 快捷键 `Win+W`，纯后台模块，不出现在菜单中 |
 
 
 ### 托盘菜单最终呈现顺序
@@ -114,7 +113,7 @@ NumLock 状态反转     (MenuGroup 1)
 
 **主题切换交互优化**：双击托盘图标可直接切换系统浅色/深色主题，无需展开右键菜单逐项选择
 - **托盘菜单深色适配**：修复 Windows 11 最新 Insider 版本下右键菜单背景色不跟随系统深色/浅色主题的问题，菜单背景现已正确贴合当前系统主题
-- 
+
 ---
 
 ## ➕ 如何新增一个功能模块
@@ -138,7 +137,7 @@ NumLock 状态反转     (MenuGroup 1)
    this.ContributesToMenu := false
    ```
 
-5. 如果需要自定义菜单展示（比如一组按钮），覆盖 `BuildMenu(trayMenu)` 方法，可参考 `80_FluxPreset.ahk` 的写法
+5. 如果需要自定义菜单展示（比如一组按钮），覆盖 `BuildMenu(trayMenu)` 方法，可参考 `50_ThemeToggle.ahk` 的写法
 
 6. 所有热键 / 定时器回调，必须用 `ObjBindMethod(this, "方法名")` 绑定，不能用裸函数名
 
