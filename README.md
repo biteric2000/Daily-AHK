@@ -1,6 +1,6 @@
 # 个人自动化脚本（AHK v2）
 
-主要功能：双击托盘图标切换系统深浅主题色、夜间自动降低音量、Copilot 键重映射为Ctrl、NumLock 状态反转、置顶切换
+**主要功能：双击托盘图标切换系统深浅主题色、夜间自动降低音量、Copilot 键重映射为Ctrl、NumLock 状态反转、置顶切换、win+w 立即休眠**
 
 基于 **AutoHotkey v2** 编写的个人自动化脚本集合，采用**模块化架构**。
 
@@ -34,6 +34,8 @@ MyAutoScript/
     ├── 60_BacklightAutoOff.ahk   # 键盘背光自动关闭
     ├── 70_CloseScreen.ahk        # 立即关闭屏幕
     └── 90_WindowManager.ahk      # 置顶切换 + 移动窗口到下一显示器
+    └── 100_HibernateHotkey.ahk   # Win+W 立即休眠
+
 ```
 
 
