@@ -17,15 +17,24 @@ SetKeyDelay(50, 50)
 #Include modules\40_NumLockReverse.ahk
 #Include modules\50_ThemeToggle.ahk
 #Include modules\60_BacklightAutoOff.ahk
-#Include modules\70_CloseScreen.ahk
-#Include modules\90_WindowManager.ahk
+;#Include modules\70_CloseScreen.ahk
+;#Include modules\80_FluxPreset.ahk
+;#Include modules\90_WindowManager.ahk
+;#Include lib/TrayIconRenderer.ahk
 #Include modules\100_HibernateHotkey.ahk
+;#Include modules\110_MouseComboTaskView.ahk
+#Include modules\130_XButtonComboAltSpace.ahk
+#Include modules\140_GameModeIMEBlock.ahk
+#Include modules\150_PureTextPaste.ahk
+#Include modules\160_AeroShakeToggle.ahk
+#Include modules\170_TrayMiddleClickMute.ahk
+
 
 ^+!r:: Reload()
 ^!q:: ExitApp()
 
 TraySetIcon("shell32.dll", 145)
-A_IconTip := "个人自动化脚本`n右键查看所有功能"
+A_IconTip := "Eric's Tool`n左键双击切换系统颜色`n右键查看所有功能"
 
 ModuleRegistry.InitAll()
 ModuleRegistry.BuildTrayMenu()
