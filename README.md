@@ -4,7 +4,7 @@
 NumLock 状态反转、置顶切换、Win+W 立即休眠、Win+V 纯文本粘贴、Aero Shake 开关、
 中键点击托盘图标静音切换**
 
-**在main.ahk代码中注释或删除不需要的模块即可选择性运行本工具。**例如：
+**在main.ahk代码中注释或删除不需要的模块即可选择性运行本工具。** 例如：
 ;#Include modules\10_NightVolume.ahk
 在这一句开头的分号，表示不再启用此模块（夜间自动降低音量）的功能，
 此后也可放心删除本模块对应的代码文件10_NightVolume.ahk
